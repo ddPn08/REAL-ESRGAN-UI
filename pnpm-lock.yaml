@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@stylelint/postcss-css-in-js': ^0.38.0
+  '@suid/material': ^0.6.2
   '@tauri-apps/api': ^1.0.2
   '@tauri-apps/cli': ^1.0.5
   '@types/node': ^18.7.16
@@ -27,6 +28,7 @@ specifiers:
   vite-plugin-solid: ^2.3.0
 
 dependencies:
+  '@suid/material': 0.6.2_solid-js@1.5.4
   '@tauri-apps/api': 1.0.2
   solid-js: 1.5.4
   solid-styled-components: 0.28.4_solid-js@1.5.4
@@ -501,6 +503,10 @@ packages:
       tslib: 2.4.0
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@stylelint/postcss-css-in-js/0.38.0_wuc352kuwbjfwnfzykq4fs3caq:
     resolution: {integrity: sha512-XOz5CAe49kS95p5yRd+DAIWDojTjfmyAQ4bbDlXMdbZTQ5t0ThjSLvWI6JI2uiS7MFurVBkZ6zUqcimzcLTBoQ==}
     peerDependencies:
@@ -513,6 +519,83 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@suid/base/0.3.1_solid-js@1.5.4:
+    resolution: {integrity: sha512-xg/ExMJtu7/tMnUrMTZhkAPrn/tCIfCfBjcCZuubpTXOHeNF+cnt/ObLnrEen2c3P0GCyrtX+W36T1LKQXninA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@popperjs/core': 2.11.6
+      '@suid/css': 0.1.6_solid-js@1.5.4
+      '@suid/system': 0.5.1_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.5.0_solid-js@1.5.4
+      clsx: 1.2.1
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/css/0.1.6_solid-js@1.5.4:
+    resolution: {integrity: sha512-1Pcb1IfuHSm/jkf/cjxoXECCpAOnK27aRt7d7WdAoFMN+oCW3rRqjZm08pFF8naNqjlm0WaweR2+LvhDv76ODw==}
+    dependencies:
+      '@suid/utils': 0.5.0_solid-js@1.5.4
+    transitivePeerDependencies:
+      - solid-js
+    dev: false
+
+  /@suid/material/0.6.2_solid-js@1.5.4:
+    resolution: {integrity: sha512-wHiPBAYHoX339HOtq22/6QXdLrVdqTdv4VMbzGb93+Pj4FZvmxWBhYt0P4n57kaEwavBRaFEQ1hV+iVlL2TRqw==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/base': 0.3.1_solid-js@1.5.4
+      '@suid/css': 0.1.6_solid-js@1.5.4
+      '@suid/system': 0.5.1_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.5.0_solid-js@1.5.4
+      clsx: 1.2.1
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/styled-engine/0.2.1_solid-js@1.5.4:
+    resolution: {integrity: sha512-41TVpbrkph5hdT8AMUyJtW/IlsTArXudHHyw75HbVeFsLeni0RUQZRn0axFSJFVZX3jjudMljmTHJYJZ83r5Pw==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/css': 0.1.6_solid-js@1.5.4
+      '@suid/utils': 0.5.0_solid-js@1.5.4
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/system/0.5.1_solid-js@1.5.4:
+    resolution: {integrity: sha512-SYwOwR4lb/g2Uo6eXN9bv1nhSRbv5RViOee+X3BH7V0cozppYJW+g8hnWTiTiyVm01oa810NjZxDXM26aNFNPA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/css': 0.1.6_solid-js@1.5.4
+      '@suid/styled-engine': 0.2.1_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.5.0_solid-js@1.5.4
+      clsx: 1.2.1
+      csstype: 3.1.0
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/types/0.2.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-96+O5iCKWE13eM9e9BedxdfxdfR5ujjgnMHeDTk5lbqiq0pbKW32VNxU5Zy4UaEHBNkmLC+Pw1Uir8gBPujdMA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/utils/0.5.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-0+1t2QRxEIQd/NfXf7E/5h3klkiAKuZ3V8owQzCewzM1dX1ElfQDbVkZ5u4+gNXdpd1Te0eiBtoeK1wMYdq1+Q==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      solid-js: 1.5.4
+    dev: false
 
   /@tauri-apps/api/1.0.2:
     resolution: {integrity: sha512-yuNW0oeJ1/ZA7wNF1KgxhHrSu5viPVzY/UgUczzN5ptLM8dH15Juy5rEGkoHfeXGju90Y/l22hi3BtIrp/za+w==}
@@ -958,6 +1041,11 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}

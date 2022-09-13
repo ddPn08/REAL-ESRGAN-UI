@@ -1,7 +1,14 @@
 /* @refresh reload */
 import { render } from 'solid-js/web'
 
-import './style.css'
-import App from './App'
+import { App } from './app'
+import { Root } from './root'
 
-render(() => <App />, document.getElementById('root') as HTMLElement)
+render(
+  () => (
+    <Root>
+      <App />
+    </Root>
+  ),
+  document.getElementById('root') as HTMLElement,
+)
