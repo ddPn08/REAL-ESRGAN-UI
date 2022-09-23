@@ -40,26 +40,36 @@ pub async fn download_latest_bin() {
         .await;
     match page {
         Ok(page) => {
-            let latest = &page.items[0];
-            if !update_available(&latest.tag_name) {
-                return;
+            let latest = &page.into_iter().find_map(|page| {
+                if !update_available(&page.tag_name) {
+                    None
+                } else {
+                    match page
+                        .assets
+                        .into_iter()
+                        .find(|asset| asset.name.contains(&OS.replace("linux", "ubuntu")))
+                    {
+                        Some(asset) => Some(asset),
+                        None => None,
+                    }
+                }
+            });
+            match latest {
+                Some(asset) => {
+                    let download_url = &asset.browser_download_url;
+
+                    let response = reqwest::get(download_url.as_str())
+                        .await
+                        .expect("Failed to download release");
+                    let bytes = response.bytes().await.expect("");
+                    let mut zip =
+                        ZipArchive::new(Cursor::new(bytes)).expect("Failed to read zip file");
+
+                    zip.extract(app_dir().join("realesrgan"))
+                        .expect("Failed to extract release");
+                }
+                None => return,
             }
-
-            let assets = &latest.assets;
-            let target = assets
-                .into_iter()
-                .find(|asset| asset.name.contains(&OS.replace("linux", "ubuntu")))
-                .expect("Failed to find release");
-            let download_url = &target.browser_download_url;
-
-            let response = reqwest::get(download_url.as_str())
-                .await
-                .expect("Failed to download release");
-            let bytes = response.bytes().await.expect("");
-            let mut zip = ZipArchive::new(Cursor::new(bytes)).expect("Failed to read zip file");
-
-            zip.extract(app_dir().join("realesrgan"))
-                .expect("Failed to extract release");
         }
         Err(e) => {
             println!("Failed to get release: {:?}", e);
